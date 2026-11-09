@@ -286,6 +286,72 @@ def page_plan():
                           "Full routine to try once", "Shower filter, after-sun gel, lip SPF, hair mask"]}),
         hide_index=True, width="stretch")
 
+    st.subheader(f"How {BRAND} is different")
+    diffs = [
+        ("🔄", "A subscription that adapts, not a one-time recommendation",
+         "myAster, OLUX and Lululab scan your skin once and sell you products. "
+         f"{BRAND} changes the box each season (summer UV vs. winter dryness) and stays with the customer."),
+        ("🚿", "Hard water treated as a skin problem",
+         "No UAE skincare brand bundles shower filters and hair repair with the routine. "
+         "Filter brands sell gadgets with no skincare."),
+        ("🩺", "A dermatologist checks in every quarter",
+         "Competitors rely only on AI or sales staff. A free online dermatologist check-in each quarter builds trust and reduces cancellations."),
+        ("🇦🇪", "Built for the UAE expat",
+         "Halal-certified, climate-tested products, aimed first at new expats whose skin is struggling with the move. "
+         "Global brands aren't localised, and local brands aren't personalised."),
+    ]
+    cols = st.columns(4)
+    for col, (ic, h, body) in zip(cols, diffs):
+        col.markdown(f'<div class="card"><h4>{ic} {h}</h4><div class="small">{body}</div></div>',
+                     unsafe_allow_html=True)
+    st.write("")
+    Y, N, P = "✅", "❌", "➖"
+    comp = pd.DataFrame({
+        "Competitor": [BRAND, "myAster (myBeauty Lens)", "TheDailyME", "OLUX / Lululab",
+                       "Gulf-climate brands (De L'Arta, Shiffa)", "Shower filters (Blue Oasis, Blu)",
+                       "Pharmacies / Sephora / Faces"],
+        "Personalised": [Y, Y, Y, Y, N, N, P],
+        "UAE climate": [Y, Y, N, N, Y, N, N],
+        "Hard water": [Y, N, N, N, N, Y, N],
+        "Subscription": [Y, N, P, N, P, N, N],
+        "Derm check-ins": [Y, N, P, N, N, N, N],
+        "Halal": [Y, P, N, N, P, N, P],
+    })
+    st.dataframe(comp, hide_index=True, width="stretch")
+    st.caption("✅ yes · ➖ partly or not confirmed · ❌ no. Based on public information about each competitor (Nov 2026).")
+
+    with st.expander("📖 Glossary: technical terms used in this dashboard"):
+        st.markdown("""
+| Term | Meaning |
+|---|---|
+| **EDA** | Exploratory Data Analysis: charts and summaries to understand the data before modelling |
+| **Synthetic data** | Survey answers created by code to behave like real respondents |
+| **Outliers / noise** | Errors or extreme values, e.g. "30 hours in AC per day" or "AED 9,999" |
+| **Imputation** | Filling a blank answer with a sensible value (median or most common answer) |
+| **Straight-liner** | A respondent who gives the same answer to every question |
+| **Classification** | Predicting yes/no: will this person subscribe? |
+| **Regression** | Predicting a number: how much will they pay? |
+| **Clustering (K-Means)** | Grouping similar customers into segments |
+| **Association rules (Apriori)** | Finding items people want together |
+| **Support / confidence / lift** | How common a combination is, how often B follows A, and how much stronger than chance the link is (lift > 1) |
+| **Accuracy / precision / recall** | Share of predictions that are right, share of predicted "yes" that are correct, share of real "yes" the model catches |
+| **ROC-AUC** | How well a model separates buyers from non-buyers (0.5 = guessing, 1 = perfect) |
+| **R²** | Share of the variation in willingness to pay that the model explains |
+| **Cross-validation** | Testing a model on several slices of the data to check it isn't lucky |
+| **Silhouette / elbow** | Two ways to choose the right number of segments |
+| **PCA** | Squeezing many variables into 2 so segments can be plotted |
+| **WTP** | Willingness to pay: the most a customer would pay |
+| **CAC** | Customer acquisition cost: ad spend to win one subscriber |
+| **Churn** | Share of subscribers who cancel each month |
+| **LTV** | Lifetime value: profit one subscriber brings before cancelling |
+| **LTV:CAC** | Value per customer ÷ cost to get them (3× or more is healthy) |
+| **ARPU** | Average revenue per user per month |
+| **EBITDA** | Operating profit before interest, tax and depreciation |
+| **Break-even** | The month profit turns positive and stays positive |
+| **Beachhead** | The first customer segment to focus on |
+| **Expat** | A person living outside their home country (about 88% of UAE residents) |
+""")
+
 
 def page_questionnaire():
     st.title("Questionnaire ↔ algorithms")
