@@ -16,7 +16,9 @@ from analysis import run_classification, run_regression, run_clustering, profile
 from finance import Assumptions, derive_inputs, unit_economics, simulate, scorecard
 
 warnings.filterwarnings("ignore")
-st.set_page_config(page_title=f"{BRAND} · Viability Dashboard", page_icon="💧", layout="wide")
+ASSETS = Path(__file__).parent / "assets"
+st.set_page_config(page_title=f"{BRAND} · Viability Dashboard", page_icon=str(ASSETS / "icon.png"), layout="wide")
+st.logo(str(ASSETS / "logo.svg"), size="large", icon_image=str(ASSETS / "mark.svg"))
 
 # ------------------------------------------------------------------ look & feel
 TEAL, SAND, INK, CORAL, SLATE, SKY = "#0F766E", "#C8963E", "#1F2937", "#D9534F", "#64748B", "#3B82F6"
@@ -158,7 +160,7 @@ def run_finance(a):
 def page_verdict():
     a = assumption_controls()
     clf, prof, d, ue, fin, sc, n, verdict, be_subs = run_finance(a)
-    st.title(f"💧 {BRAND}")
+    st.image(str(ASSETS / "logo.svg"), width=300)
     st.caption(TAGLINE + " · Is this business sustainable?")
 
     colour = {"Sustainable": "#047857", "Sustainable with conditions": TEAL,
