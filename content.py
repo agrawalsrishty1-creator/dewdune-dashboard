@@ -34,12 +34,18 @@ PLAN = {
         "Year 2: Expand to KSA (Riyadh/Jeddah), which has a similar climate with no local personalised player.",
     ],
     "Competition": [
-        "Pharmacies (Aster, Boots, Life): trusted but generic. No personalisation and no subscription.",
-        "Sephora/Faces: prestige range but expensive, and recommendations are driven by sales staff.",
-        "Global D2C personalisation brands (e.g., Curology, Proven): not localised, no GCC shipping or halal positioning.",
-        "DewDune's edge: climate data + hard-water focus + halal + subscription convenience.",
+        "Closest threat: Aster's myAster app (myBeauty Lens). An AI skin scan that factors in UAE temperature, humidity and pollution, "
+        "with products ordered in the app. Strong reach, but no subscription, hard-water care or dermatologist follow-up.",
+        "AI and custom skincare already in the UAE: TheDailyME (survey-based custom formulas), OLUX in Sharjah (AI skin analysis), "
+        "and Lululab's AI beauty store in Dubai Mall. On its own, personalisation no longer sets DewDune apart.",
+        "Gulf-climate brands (De L'Arta, Shiffa, KJ Serums): made for heat and AC, but one product range for everyone and not sold as a subscription.",
+        "Shower filters (Blue Oasis, Blu, Cleansui): sold as standalone gadgets with no link to a skincare routine.",
+        "Pharmacies (Boots, Life) and Sephora/Faces: trusted and wide range, but advice comes from sales staff and there is no subscription.",
+        "DewDune's edge: the only offer combining a subscription, hard-water and climate bundles, and quarterly dermatologist check-ins. "
+        "Position it as 'the routine that adapts every month', not 'AI picks your products'.",
     ],
     "Key risks": [
+        "Copycat risk: myAster could add a subscription for its existing pharmacy customers. Speed and owning hard-water care are the moat.",
         "Stated survey intent overstates real purchase. The financial model applies an intent-realisation discount.",
         "Subscription fatigue and churn. Quarterly plans and seasonal personalisation are designed to reduce it.",
         "Regulatory: UAE cosmetic product registration (Dubai Municipality / MoIAT) adds 2–4 months before launch.",
