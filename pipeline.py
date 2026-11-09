@@ -24,7 +24,7 @@ PRETTY = {
     "q6_monthly_income_aed": "Monthly income", "q7_years_in_uae": "Years in UAE",
     "q8_skin_type": "Skin type", "q10_outdoor_hours_day": "Outdoor hrs/day",
     "q11_ac_hours_day": "AC hrs/day", "q12_hard_water_impact": "Hard-water impact",
-    "q13_monthly_skincare_spend_aed": "Monthly skincare spend", "q15_main_channel": "Main channel",
+    "q13_monthly_skincare_spend_aed": "Monthly skincare spend", "q14_products_used": "Products used", "q15_main_channel": "Main channel",
     "q16_purchase_frequency": "Purchase frequency", "q17_brands_tried_last_year": "Brands tried (12m)",
     "q18_routine_steps": "Routine steps", "q19_existing_subscriptions": "Existing subscriptions",
     "q20_trust_personalised_reco": "Trust in personalised reco", "q21_clean_halal_importance": "Clean/halal importance",

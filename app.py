@@ -498,8 +498,8 @@ def page_eda():
         ch = d.groupby("q15_main_channel").agg(n=("respondent_id", "count"), sub=("will_subscribe", "mean")).reset_index()
         fig = px.scatter(ch, x="n", y="sub", size="n", text="q15_main_channel", title="Where they shop vs intent",
                          labels={"n": "Respondents", "sub": "Likely to subscribe"}, color_discrete_sequence=[SAND])
-        fig.update_traces(textposition="top center")
-        fig.update_layout(height=380, yaxis_tickformat=".0%")
+        fig.update_traces(textposition="top center", cliponaxis=False)
+        fig.update_layout(height=380, yaxis_tickformat=".0%", xaxis_range=[200, 1250], margin=dict(l=60, r=40))
         st.plotly_chart(fig)
 
     st.subheader("Attitudes: likely vs unlikely subscribers")
@@ -509,18 +509,20 @@ def page_eda():
     fig = go.Figure()
     for col, colr in zip(att.columns, ["#CBD5E1", TEAL]):
         fig.add_bar(y=att.index, x=att[col], name=col, orientation="h", marker_color=colr)
-    fig.update_layout(barmode="group", height=440, xaxis_title="Mean score (1–5)")
+    fig.update_layout(barmode="group", height=460, xaxis_title="Mean score (1–5)", font=dict(size=14),
+                      title="Likely subscribers trust personalisation more and are less satisfied today")
     st.plotly_chart(fig)
 
     st.subheader("Correlations")
-    num = ["q7_years_in_uae", "q10_outdoor_hours_day", "q11_ac_hours_day", "q12_hard_water_impact",
-           "q13_monthly_skincare_spend_aed", "q17_brands_tried_last_year", "q18_routine_steps", "income_ord"] + LIKERT + \
-          ["n_concerns", "q30_subscribe_likelihood", "q31_max_monthly_wtp_aed"]
+    num = ["income_ord", "q7_years_in_uae", "q12_hard_water_impact", "q13_monthly_skincare_spend_aed",
+           "q18_routine_steps", "q20_trust_personalised_reco", "q22_price_sensitivity", "q25_routine_satisfaction",
+           "q26_derm_consult_interest", "n_concerns", "q30_subscribe_likelihood", "q31_max_monthly_wtp_aed"]
     corr = d[num].corr()
     corr.index = corr.columns = [pretty(i).replace("income_ord", "Income") for i in num]
-    fig = px.imshow(corr, color_continuous_scale="RdBu_r", zmin=-1, zmax=1, aspect="auto", text_auto=".1f")
-    fig.update_layout(height=640)
-    fig.update_traces(textfont_size=9)
+    fig = px.imshow(corr, color_continuous_scale="RdBu_r", zmin=-1, zmax=1, aspect="auto", text_auto=".2f",
+                    title="What moves subscribe intent and willingness to pay (Pearson r)")
+    fig.update_layout(height=620, font=dict(size=13))
+    fig.update_traces(textfont_size=12)
     st.plotly_chart(fig)
 
 
