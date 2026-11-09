@@ -46,6 +46,9 @@ DATA = Path(__file__).parent / "data" / "survey_raw.csv"
 # ------------------------------------------------------------------ cached compute
 @st.cache_data(show_spinner="Cleaning survey data…")
 def load():
+    if not DATA.exists():  # regenerate the (seeded, identical) synthetic survey
+        import subprocess, sys
+        subprocess.run([sys.executable, str(Path(__file__).parent / "generate_data.py")], check=True)
     raw = pd.read_csv(DATA)
     df, log = clean(raw)
     return raw, features(df), log
